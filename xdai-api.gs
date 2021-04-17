@@ -39,7 +39,6 @@ async function getxDaiBalance(xDaiAddress, parseOptions, calledTimes = 0) {
     return "Error: called too many times. " + calledTimes;
   }
 
-  Utilities.sleep(Math.random() * 100 + waitInMiliseconds)
   id_cache = 'XDAI' + xDaiAddress + 'XDAIbalance'
   var cache = CacheService.getScriptCache();
   var cached = cache.get(id_cache);
@@ -48,6 +47,7 @@ async function getxDaiBalance(xDaiAddress, parseOptions, calledTimes = 0) {
   }
 
   try {
+    Utilities.sleep(Math.random() * 100 + waitInMiliseconds)
     url = "https://blockscout.com/poa/xdai/api?module=account&action=balance&address=" + xDaiAddress;
 
     var res = await UrlFetchApp.fetch(url)
@@ -79,7 +79,6 @@ async function getxDaiTokenBalance(xDaiAddress, tokenContract, parseOptions, cal
     return "Error: called too many times. " + calledTimes;
   }
 
-  Utilities.sleep(Math.random() * 100 + waitInMiliseconds)
   id_cache = 'XDAI' + xDaiAddress + tokenContract + 'balance'
   var cache = CacheService.getScriptCache();
   var cached = cache.get(id_cache);
@@ -88,6 +87,7 @@ async function getxDaiTokenBalance(xDaiAddress, tokenContract, parseOptions, cal
   }
 
   try {
+    Utilities.sleep(Math.random() * 100 + waitInMiliseconds)
     url = "https://blockscout.com/poa/xdai/api?module=account&action=tokenbalance&contractaddress=" + tokenContract + "&address=" + xDaiAddress;
 
     var res = await UrlFetchApp.fetch(url)
